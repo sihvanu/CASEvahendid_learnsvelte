@@ -1,7 +1,9 @@
 <script>
     import ItemList from "./components/ItemList.svelte";
+    import Modal from "./components/Modal.svelte";
 
-    let counter = 0;
+    let modalActive = false;
+
     let message = '';
     let items = [
         {name:'piim', done: false},
@@ -19,6 +21,9 @@
         message = '';
     }
 </script>
+<button class="button" on:click={()=>{modalActive=true;}}>Click me!</button>
+<Modal bind:active={modalActive} on:close={()=>{modalActive=false;}}></Modal>
+
 <div class="content">
     <input type="text" class="input" bind:value={message}>
     <button class="button is-primary" on:click={add}>Add</button>
